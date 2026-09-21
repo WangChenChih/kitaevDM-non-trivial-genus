@@ -92,19 +92,19 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\tcor}[2]{\langle -ic_{#1}c_{#2} \rangle_M}
 
-\newcommand{\p}{$+$}
-\newcommand{\m}{$-$}
-\newcommand{\e}{even}
-\newcommand{\od}{odd}
-
-\newcommand{\cnot}{\mrm{CNOT}}
-
-\newcommand{\arrequ}[1]{\begin{aligned}#1\end{aligned}}
-
-\newcommand{\Qcirc}[1]{\begin{minipage}[h]{0.7cm}
+\newcommand{\wordfig}[2]{\begin{minipage}[h]{#1 cm}
 	\vspace{0pt}
-	\Qcircuit @C=1em @R=.7em {#1}
+	\includegraphics[width=\textwidth]{#2}
    \end{minipage}}
+   
+% \newcommand{\cnot}{\mrm{CNOT}}
+
+% \newcommand{\arrequ}[1]{\begin{aligned}#1\end{aligned}}
+
+% \newcommand{\Qcirc}[1]{\begin{minipage}[h]{0.7cm}
+% 	\vspace{0pt}
+% 	\Qcircuit @C=1em @R=.7em {#1}
+%    \end{minipage}}
 \newcommand{\dimer}[2]{\sigma_{#1}^{\alpha_{#1#2}}\sigma_{#2}^{\alpha_{#1#2}}}
 
 \begin{document}
@@ -229,6 +229,45 @@ p_\mathfrak{D}
 \Tr_A\lr{\hat{\Pi}_A \hat{\Pi}_\mathcal{L} \hat{\Pi}_\mathfrak{H}^{(\pm)}} = 2^{N^A - N^A_p - 2}
 \]
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/web-patch.pdf}
+    \caption{The web-patch configuration $\mathfrak{H}$ covering the interior hole of a non-simply connected subsystem. Its corresponding string operator $\Sigma_\mathfrak{H}$ commutes with other string operators lying within the shaded subsystem.}
+    \label{fig:web-patch-config}
+\end{figure}
+
+\[
+\lr{\wordfig{3}{figures/web-patch.pdf}}
+=
+\lr{\wordfig{3}{figures/gauge-link.pdf}}
+\ominus
+\lr{\wordfig{3}{figures/raw-web.pdf}}
+\]
+
+
+\begin{equation}
+    \rho_A
+    =
+    \frac{1}{2^{N^A - N^A_p - 2g}}
+    \hat{\Pi}_A
+    \hat{\Pi}_g
+    \bigoplus_{\lrg{s}}
+    \lrm{
+        \hat{\Pi}_\mathfrak{H}^{(\lrg{s})}
+        \sum_{[\mathfrak{D}]\subset A}
+        \tilde{\mathfrak{C}}^{(\lrg{s})}_\mathfrak{D} \Sigma_\mathfrak{D}
+    }
+\end{equation}
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        &\hat{\Pi}_g \equiv
+        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + W_{\mathcal{L}^{(n)}}}{2}} \\
+        &\hat{\Pi}_\mathfrak{H}^{(\lrg{s})} \equiv 
+        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n\Sigma_{\mathfrak{H}^{(n)}}}{2}} 
+    \end{aligned}
+    \right.
+\end{equation}
 
 \bibliographystyle{my_apsrev4-2}
 % \bibliography{ref}% Produces the bibliography via BibTeX.
