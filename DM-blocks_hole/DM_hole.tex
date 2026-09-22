@@ -7,7 +7,7 @@
 %\usepackage{CJK,amsmath}
 \usepackage{amsfonts,amssymb}
 \usepackage{amsmath}
-\numberwithin{equation}{section}    % numbering equations by their section
+% \numberwithin{equation}{section}    % numbering equations by their section
 \usepackage{fancyhdr}
 %\pagestyle{fancy}
 \usepackage{textcomp}
@@ -134,7 +134,16 @@ First, we consider a non-simply connected region $A$ with an interior hole. The 
         \mathfrak{C}_{\mathfrak{D} \ominus \mathfrak{H}} \Sigma_{\mathfrak{D}\ominus\mathfrak{H}}
     }
 \]
-where $\mathcal{L}$ is a closed loop inside the subsystem $A$ that encloses the hole. In other words, the loop $\mathcal{L}$ is a non-contractible loop according to the non-simply connected subsystem $A$. The edge configuration $\mathfrak{H}$ represents the \textit{web-patch} configuration of the hole enclosed by $A$ consisting of all the dimers inside the hole and those that cross the inner boundary.
+where $\mathcal{L}$ is a closed loop inside the subsystem $A$ that encloses the hole. In other words, the loop $\mathcal{L}$ is non-contractible in the non-simply connected subsystem $A$. The edge configuration $\mathfrak{H}$ represents the \textit{patch} configuration of the hole enclosed by $A$ as illustrated in Fig.~\ref{fig:patch-config}(a).
+
+\[
+\lr{\wordfig{3}{figures/web-patch.pdf}}
+=
+\lr{\wordfig{3}{figures/gauge-link.pdf}}
+\ominus
+\lr{\wordfig{3}{figures/raw-web.pdf}}
+\]
+
 \[
     \rho_A
     =
@@ -149,7 +158,7 @@ where $\mathcal{L}$ is a closed loop inside the subsystem $A$ that encloses the 
         + 
         \underbrace{
             \varphi(\mathfrak{H},\mathfrak{D}) \frac{\mathfrak{C}_{\mathfrak{D}\ominus\mathfrak{H}}}{\mathfrak{C}_\mathfrak{D}}
-        }_{\equiv 2p_\mathfrak{D}-1 }
+        }_{\equiv 2p_\mathfrak{D}^{(+)}-1 }
         \Sigma_\mathfrak{H}
     }
     \mathfrak{C}_\mathfrak{D}
@@ -164,12 +173,12 @@ where $\mathcal{L}$ is a closed loop inside the subsystem $A$ that encloses the 
     \hat{\Pi}_\mathcal{L}
     \sum_{[\mathfrak{D}]\subset A}
     \lrm{
-        p_\mathfrak{D}
+        p_\mathfrak{D}^{(+)}
         \lr{
         \frac{\mathds{1} + \Sigma_\mathfrak{H}}{2}
         }
         +
-        (1 - p_\mathfrak{D})
+        p_\mathfrak{D}^{(-)}
         \lr{
         \frac{\mathds{1} - \Sigma_\mathfrak{H}}{2}
         }
@@ -184,30 +193,38 @@ where $\mathcal{L}$ is a closed loop inside the subsystem $A$ that encloses the 
     \frac{1}{2^{N^A - N^A_p - 2}}
     \hat{\Pi}_A
     \hat{\Pi}_\mathcal{L}
+    \sum_{[\mathfrak{D}]\subset A}
     \lrm{
         \lr{
         \hat{\Pi}_\mathfrak{H}^{(+)}
-        \sum_{[\mathfrak{D}]\subset A}
         \tilde{\mathfrak{C}}^{(+)}_\mathfrak{D} \Sigma_\mathfrak{D}
         }
         \oplus
         \lr{
         \hat{\Pi}_\mathfrak{H}^{(-)}
-        \sum_{[\mathfrak{D}]\subset A}
         \tilde{\mathfrak{C}}^{(-)}_\mathfrak{D} \Sigma_\mathfrak{D}
         }
     }
 \]
 
 \[
-p_\mathfrak{D}
-=
-\frac{1}{2}
-\lr{
-        1
-        + 
-        \varphi(\mathfrak{H},\mathfrak{D}) \frac{\mathfrak{C}_{\mathfrak{D}\ominus\mathfrak{H}}}{\mathfrak{C}_\mathfrak{D}}
-    }
+\left\{
+\begin{aligned}
+    & p_\mathfrak{D}^{(+)}
+        =
+        \frac{1}{2}
+        \lr{
+                1
+                + 
+                \varphi(\mathfrak{H},\mathfrak{D}) \frac{\mathfrak{C}_{\mathfrak{D}\ominus\mathfrak{H}}}{\mathfrak{C}_\mathfrak{D}}
+            } \\
+    & p_\mathfrak{D}^{(-)} = 1 - p_\mathfrak{D}^{(+)}
+\end{aligned}
+\right.
+\]
+
+\[
+\tilde{\mathfrak{C}}^{(\pm)}_\mathfrak{D} \equiv p^{(\pm)}_\mathfrak{D} \mathfrak{C}_\mathfrak{D}
 \]
 
 \[
@@ -239,17 +256,11 @@ p_\mathfrak{D}
     \centering
     (a)\includegraphics[height=0.2\textheight]{figures/web-patch.pdf}
     (b)\includegraphics[height=0.2\textheight]{figures/wilson-wp-inter.pdf}
-    \caption{(a) The web-patch configuration $\mathfrak{H}$ covering the interior hole of a non-simply connected subsystem. Its corresponding string operator $\Sigma_\mathfrak{H}$ commutes with other string operators lying within the shaded subsystem. (b) The non-contractible Wilson operator with two endpoints attached to different boundaries anti-commutes with the web-patch operator $\Sigma_\mathfrak{H}$ covering the interior hole, while the non-contractible Wilson operator with both endpoints attached to the web-patch commutes with $\Sigma_\mathfrak{H}$.}
-    \label{fig:web-patch-config}
+    \caption{(a) The patch configuration $\mathfrak{H}$ covering the interior hole of a non-simply connected subsystem. Its corresponding string operator $\Sigma_\mathfrak{H}$ commutes with other string operators lying within the shaded subsystem. (b) The non-contractible Wilson operator $W_2$ with two endpoints attached to different boundaries anti-commutes with the patch operator $\Sigma_\mathfrak{H}$ covering the interior hole, while the non-contractible Wilson operator $W_1$ with both endpoints attached to the patch commutes with $\Sigma_\mathfrak{H}$ as well as other string operators supported within the subsystem $A$, hence commutes with the reduced density matrix $\rho_A$.}
+    \label{fig:patch-config}
 \end{figure}
 
-\[
-\lr{\wordfig{3}{figures/web-patch.pdf}}
-=
-\lr{\wordfig{3}{figures/gauge-link.pdf}}
-\ominus
-\lr{\wordfig{3}{figures/raw-web.pdf}}
-\]
+
 
 
 \begin{equation}
@@ -258,12 +269,11 @@ p_\mathfrak{D}
     \frac{1}{2^{N^A - N^A_p - 2g}}
     \hat{\Pi}_A
     \hat{\Pi}_g
+    \sum_{[\mathfrak{D}]\subset A}
     \bigoplus_{\lrg{s}}
-    \lrm{
-        \hat{\Pi}_\mathfrak{H}^{(\lrg{s})}
-        \sum_{[\mathfrak{D}]\subset A}
-        \tilde{\mathfrak{C}}^{(\lrg{s})}_\mathfrak{D} \Sigma_\mathfrak{D}
-    }
+    \tilde{\mathfrak{C}}^{(\lrg{s})}_\mathfrak{D}
+    \hat{\Pi}_\mathfrak{H}^{(\lrg{s})}
+    \Sigma_\mathfrak{D}
 \end{equation}
 \begin{equation}
     \left\{
@@ -271,14 +281,121 @@ p_\mathfrak{D}
         &\hat{\Pi}_g \equiv
         \prod_{n=1}^{g}\lr{\frac{\mathds{1} + W_{\mathcal{L}^{(n)}}}{2}} \\
         &\hat{\Pi}_\mathfrak{H}^{(\lrg{s})} \equiv 
-        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n\Sigma_{\mathfrak{H}^{(n)}}}{2}} 
+        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n\Sigma_{\mathfrak{H}^{(n)}}}{2}}  \\
+        & \tilde{\mathfrak{C}}_\mathfrak{D}^{(\lrg{s})} \equiv \lr{\prod_{n=1}^{g}p_{\mathfrak{D},n}^{(s_n)}} \mathfrak{C}_\mathfrak{D}
     \end{aligned}
     \right.
 \end{equation}
+The non-contractible Wilson operators connecting two electric-field operators fall into two types. One type, denoted as $\mathfrak{W}_s$, has both endpoints attached to the same boundary, while the other, denoted as $\mathfrak{W}_d$, has endpoints attached to different boundaries. As illustrated in Fig.~\ref{fig:patch-config}(b), the non-contractible Wilson operator $W_1$ is of type $\mathfrak{W}_s$, while the other Wilson operator $W_2$ is of type $\mathfrak{W}_d$. 
+\[
+W_2 \hat{\Pi}^{(\pm)}_\mathfrak{H} W_2^\dagger = \hat{\Pi}^{(\mp)}_\mathfrak{H}
+\]
 
 \begin{equation}\label{eq:patition-condition}
-  \sum_{\lrg{s}} \tilde{\mathfrak{C}}_\mathfrak{D}^{(\lrg{s})} = \mathfrak{C}_\mathfrak{D}
+  \sum_{\lrg{s}} \tilde{\mathfrak{C}}_\mathfrak{D}^{(\lrg{s})} 
+  = \sum_{\lrg{s}} \lr{\prod_{n=1}^{g}p_{\mathfrak{D},n}^{(s_n)}} \mathfrak{C}_\mathfrak{D}
+  =
+  \lr{\prod_{n=1}^{g}\sum_{s_n}p_{\mathfrak{D},n}^{(s_n)}} \mathfrak{C}_\mathfrak{D}
+  = \mathfrak{C}_\mathfrak{D}
 \end{equation}
+
+This formula can be generalized to multiply-connected regions. Suppose a connected region has a genus number $g$, and the $n$-th hole surrounded by the connected region $A$ is denoted by $B^{(n)}$ such that $A\cap B^{(n)}=\varnothing$ and $A\cup \lr{\bigcup_{n=1}^{g} B^{(n)}}$ is simply-connected. Denoting by $\ell_{\mrm{out}} = \abs{\de\lr{A\cup \lr{\bigcup_{n=1}^{g} B^{(n)}}}}$ the number of crossing edges of the outer boundary, and by $\ell_{\mrm{in}}^{(n)}=\abs{\de B^{(n)}}$ the length of the $n$-th inner boundary, we have
+\[
+\left\{
+\begin{aligned}
+&\ell_{\mrm{out}} = N^A- 2N^A_{p} + \sum_{n=1}^{g}\lr{N^{B(n)} -2N^{B(n)}_{p} - 2N^{\de(n)}_{p}} +2 \\
+&\ell_{\mrm{in}}^{(n)} = N^{B(n)} -2N^{B(n)}_{p}  +2
+\end{aligned}
+\right.
+\]
+where $N^{\de(n)}_p$ is the number of plaquettes at the interface between $A$ and $B$. It is obvious that $N^{\de(n)}_p = \ell_{\mrm{in}}^{(n)}$. Thus, we have
+\[
+\ell_{\mrm{out}} = N^A- 2N^A_{p} - \sum_{n=1}^{g}\ell_{\mrm{in}}^{(n)} -2g + 2
+\]
+At the same time, we know that the length of the boundary of the region $A$ is the sum of the outer boundary and all inner boundaries
+\[
+\abs{\de A} = \ell_{\mrm{out}} + \sum_{n=1}^{g}\ell_{\mrm{in}}^{(n)}
+\]
+Combining this relation with the result we obtained gives a generalized geometric relation:
+\begin{equation}\label{eq:Pick_multi-con}
+    \abs{\de A} = N^A-2N^A_p+2(1-g)
+\end{equation}
+
+\begin{equation}\label{eq:S-rep_multi-connect}
+    \hat{\mathcal{S}}_\mathfrak{D} 
+    \equiv 
+    \hat{\Pi}_A \hat{\Pi}_g
+    \bigoplus_{\lrg{s}} \tilde{p}_\mathfrak{D}^{(\lrg{s})} \hat{\Pi}_\mathfrak{H}^{(\lrg{s})}\Sigma_\mathfrak{D}
+\end{equation}
+Since $[\Sigma_\mathfrak{H}, \Sigma_{\mathfrak{H}'}] = 0$ and $[\Sigma_\mathfrak{H}, \Sigma_\mathfrak{D}] = 0\;\forall \mathfrak{D}\subset A$, the projective string operators also satisfy the following algebraic relation
+\begin{equation}\label{eq:fermion-statistics-algebra}
+    \hat{\mathcal{S}}_\mathfrak{D} \hat{\mathcal{S}}_{\mathfrak{D}'} = \varphi(\mathfrak{D},\mathfrak{D}') \hat{\mathcal{S}}_{\mathfrak{D} \ominus \mathfrak{D}'}
+\end{equation}
+The fact that this relation still applies implies that the endpoints of the projective string operators defined in non-simply connected subsystems still obey fermionic statistics. Therefore, \textbf{the string operators are still equivalent to Majorana fermionic operators in non-simply connected subsystems}. 
+
+Together, the reduced density matrix can be organized into the following form that resembles the Majorana fermionic reduced density matrix of the equivalent Majorana fermionic system. 
+\begin{equation}\label{eq:RDM-norm}
+    \rho_A
+    =
+    \frac{1}{2^{\abs{\de A}/2 - (1+g)}}
+    \lrm{
+        \frac{1}{2^{N^A/2}}
+        \sum_{[\mathfrak{D}]\subset A}
+        \mathfrak{C}_\mathfrak{D} \hat{\mathcal{S}}_\mathfrak{D}
+    }
+\end{equation}
+
+\[
+\Tr_A \hat{\mathcal{S}}_\varnothing 
+= 
+\sum_{\lrg{s}} \tilde{p}^{(\lrg{s})}_\varnothing \Tr_A
+\lr{
+\hat{\Pi}_A \hat{\Pi}_g \hat{\Pi}^{(\lrg{s})}_{\mathfrak{H}}
+}
+=
+\sum_{\lrg{s}} \tilde{p}^{(\lrg{s})}_\varnothing 2^{N^A - N^A_p - 2g}
+=
+2^{N^A - N^A_p - 2g}
+\]
+On the other hand, the reduced density matrix of the equivalent Majorana fermionic system reads
+\[
+\rho^F_A = \frac{1}{2^{N^A/2}} \sum_{[\mathfrak{D}]\subset A} \mathfrak{C}_\mathfrak{D} \hat{\mathcal{M}}_\mathfrak{D}
+\]
+Accordingly, the Hilbert space dimension of the equivalent Majorana fermionic system is 
+\[
+\frac{\Tr_A\hat{\mathcal{S}}_\varnothing}{\Tr_{A,F}\hat{\mathcal{M}}_{\varnothing}} 
+=
+\frac{\dim \mathcal{H}_S}{\dim \mathcal{H}_F}
+=
+2^{\abs{\de A}/2 - (1+g)}
+\]
+Therefore, the entanglement entropy computed using the spin reduced density matrix is
+\begin{align}
+    S_A
+    &=
+    -\Tr_A \rho_A \ln \rho_A \nonumber\\
+    &= 
+    -\frac{1}{2^{\abs{\de A}/2 - (1+g)}}
+    \Tr_A\lrm{
+        \lr{
+        \frac{1}{2^{N^A/2}}
+        \sum_{[\mathfrak{D}]\subset A}
+        \mathfrak{C}_\mathfrak{D} \hat{\mathcal{S}}_\mathfrak{D}
+        }
+        \ln\lr{
+        \frac{1}{2^{N^A/2}}
+        \sum_{[\mathfrak{D}]\subset A}
+        \mathfrak{C}_\mathfrak{D} \hat{\mathcal{S}}_\mathfrak{D}
+        }
+    }
+    +
+    \lr{\frac{1}{2}\abs{\de A} - 1 - g}\ln2 \nonumber\\
+    &=
+    -\Tr_{A,F} \rho^F_A\ln \rho^F_A
+    +
+    \lr{\frac{1}{2}\abs{\de A} - 1 - g}\ln2
+\end{align}
+
 
 \bibliographystyle{my_apsrev4-2}
 % \bibliography{ref}% Produces the bibliography via BibTeX.
