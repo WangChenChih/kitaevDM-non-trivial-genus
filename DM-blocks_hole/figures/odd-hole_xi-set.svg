@@ -27,8 +27,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
      inkscape:zoom="3.0496549"
-     inkscape:cx="137.55655"
-     inkscape:cy="130.99843"
+     inkscape:cx="105.58572"
+     inkscape:cy="97.879927"
      inkscape:window-width="1920"
      inkscape:window-height="1094"
      inkscape:window-x="-11"
@@ -2397,6 +2397,13 @@
         </g>
       </g>
     </g>
+    <circle
+       style="display:inline;fill:none;fill-opacity:1;stroke:#3300e0;stroke-width:0.792;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.792, 1.584;stroke-dashoffset:0;stroke-opacity:1"
+       id="path468-2"
+       cx="68.286453"
+       cy="106.77914"
+       r="5.3142676"
+       transform="translate(0,-3.075e-5)" />
   </g>
   <g
      inkscape:groupmode="layer"
