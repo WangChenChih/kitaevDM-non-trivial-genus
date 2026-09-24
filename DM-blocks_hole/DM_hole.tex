@@ -458,8 +458,24 @@ If all the boundaries have even length, the number of residual electric field co
 \text{Degree of degeneracy} = 2^{\abs{\de A}/2 - N^A_\de} = \exp \lr{S^A_G}
 \]
 
-\section{Electric Field Parities are 't Hooft Loops}
+\section{Electric Field Parity, 't Hooft Loops, and Subsystem Fermion Parity}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/vison-loop-fermion-parity.pdf}
+    \caption{In the Kitaev model, assembling $\xi$-operators along a closed loop represents a 't Hooft loop of the $\mathbb{Z}_2$ gauge theory, which can be understood as the path of a $\mathbb{Z}_2$ gauge flux (vison) moving along the closed loop and eventually being annihilated by its partner created at the same spot at the very beginning. It is also equivalent to the subsystem fermion parity of the region enclosed by the 't Hooft loop.}
+    \label{fig:vison-loop-fermion-parity}
+\end{figure}
 
+\alert{fermion parity, vison or fermion deconfinement}
+\begin{equation}
+    \exp\lr{i\pi\oint_{\de\Gamma} E_\perp \mrm{d}\ell}
+    \to 
+    \prod_{\hat{\xi} \in \de \Gamma}\hat{\xi} 
+    \propto
+    (-1)^{F_\Gamma} 
+    \;; \quad F_\Gamma \propto \prod_{i\in\Gamma}c_i
+\end{equation}
+where $E_\perp$ represents the electric field components perpendicular to the 't Hooft loop direction.
 
 \appendix
 
