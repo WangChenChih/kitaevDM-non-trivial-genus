@@ -465,17 +465,38 @@ If all the boundaries have even length, the number of residual electric field co
     \caption{In the Kitaev model, assembling $\xi$-operators along a closed loop represents a 't Hooft loop of the $\mathbb{Z}_2$ gauge theory, which can be understood as the path of a $\mathbb{Z}_2$ gauge flux (vison) moving along the closed loop and eventually being annihilated by its partner created at the same spot at the very beginning. It is also equivalent to the subsystem fermion parity of the region enclosed by the 't Hooft loop.}
     \label{fig:vison-loop-fermion-parity}
 \end{figure}
-
-\alert{fermion parity, vison or fermion deconfinement}
+Aside from the Wilson loops, the 't Hooft loops should also be discussed since the low-energy effective theory of the Kitaev model is a TQFT. The 't Hooft loop in this note is operationally defined as the operator that creates a pair of $\mathbb{Z}_2$ gauge fluxes (visons) and then moves one of the visons around a loop until it gets back to the initial spot to annihilate its partner vison. An example of a 't Hooft loop is illustrated in Fig.~\ref{fig:vison-loop-fermion-parity} as represented by a dashed closed loop crossing a series of bonds at which the $\mathbb{Z}_2$ gauge fields are flipped by the electric fields. From the gauge theory perspective, the 't Hooft operator $\tilde{T}_{\mathcal{C}}$ along a closed loop $\mathcal{C}$ in the Kitaev model can be defined as follows
+\[
+    \tilde{T}_{\mathcal{C}}
+    =
+    \prod_{i\in\mathcal{C}} b^{\mu_i}_i
+    =
+    \exp\lr{i\pi\oint_{\mathcal{C}} E_\perp \mrm{d}\ell},
+\]
+where the electric fields are provided by the $b$-Majorana fermionic operators along the loop $\mathcal{C}$. The above interpretation, combined with our discussions on the relationship between the patch string operators and electric fields, leads to a picture that the 't Hooft loop, which is equivalent to the electric field parity along the loop, is also related to the subsystem fermion parity of the region enclosed by the loop. Such a relationship is formulated mathematically as follows, 
 \begin{equation}
+    \tilde{T}_{\de\Gamma}
+    =
     \exp\lr{i\pi\oint_{\de\Gamma} E_\perp \mrm{d}\ell}
     \to 
     \prod_{\hat{\xi} \in \de \Gamma}\hat{\xi} 
+    \to
+    \prod_{i\in\Gamma}c_i
     \propto
     (-1)^{F_\Gamma} 
-    \;; \quad F_\Gamma \propto \prod_{i\in\Gamma}c_i
+    \;; \quad F_\Gamma = \sum_{i\in\Gamma} n_i,
 \end{equation}
-where $E_\perp$ represents the electric field components perpendicular to the 't Hooft loop direction.
+where $E_\perp$ represents the electric field components perpendicular to the 't Hooft loop direction. According to the divergence theorem, the relationship between the electric fields along the loop $\de\Gamma$ and the subsystem fermion parity can be translated to the Gauss law of the gauge theory,
+\[
+\oint_{\de\Gamma} E_\perp \mrm{d}\ell = \sum_{i\in\Gamma} n_i \Rightarrow \dive E = \rho.
+\]
+In conclusion, the Gauss law of the gauge theory in the Kitaev model implies the equivalence between the 't Hooft loop and the subsystem fermion parity. We can accordingly rewrite the patch projectors in terms of 't Hooft loop operators enclosing each hole inside the multiply-connected subsystem.
+\begin{equation}\label{eq:thooft-loop-projector}
+    \hat{\Pi}_\mathfrak{H}^{(\lrg{s})} 
+    = 
+    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n \tilde{T}_{\de B^{(n)}}}{2}}.
+\end{equation}
+In Ref.\cite{Xu-Rakovszky-Knap-Pollmann_2025}, the topological entanglement entropy is interpreted as a consequence of \textbf{spontaneously broken 't Hooft 1-form symmetry}. Formally, the state $\ket{\psi}$ breaks the 't Hooft 1-form symmetry if $T\ket{\psi}$ is orthogonal to $\ket{\psi}$. In the Kitaev model, the 't Hooft loop is not a symmetry since it doesn't commute with the Hamiltonian. However, it does serve as a source to produce the topological entanglement entropy as discussed in previous sections. 
 
 \appendix
 
@@ -507,7 +528,7 @@ N^A = \abs{\de A} \mod 2
 \]
 
 \bibliographystyle{my_apsrev4-2}
-% \bibliography{ref}% Produces the bibliography via BibTeX.
+\bibliography{ref}% Produces the bibliography via BibTeX.
 
 
 
