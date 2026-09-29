@@ -256,7 +256,114 @@ The reduced density matrix expressed in the above form implies that the coeffici
 % \Tr_A\lr{\hat{\Pi}_A \hat{\Pi}_\mathcal{L} \hat{\Pi}_\mathfrak{H}^{(\pm)}} = 2^{N^A - N^A_p - 2}
 % \]
 
-For subsystems with more than one hole, the density matrix takes a similar form.
+For subsystems with two holes, the density matrix takes a similar form.
+\[
+    \rho_{A}
+    =
+    \frac{1}{2^{N^A - N^A_p - 2}}
+    \hat{\Pi}_A
+    \underbrace{
+    \lr{\frac{\mathds{1} + W_{\mathcal{L}_1}}{2}}
+    \lr{\frac{\mathds{1} + W_{\mathcal{L}_2}}{2}}
+    }_{\hat{\Pi}_\mathcal{L}}
+    \sum_{[\mathfrak{D}]\subset A}
+    \lr{
+        \begin{aligned}
+            &\mathfrak{C}_\mathfrak{D} \Sigma_\mathfrak{D} 
+            +
+            \mathfrak{C}_{\mathfrak{D} \ominus \mathfrak{H}_1} \Sigma_{\mathfrak{D}\ominus\mathfrak{H}_1}\\
+            &\quad
+            +
+            \mathfrak{C}_{\mathfrak{D} \ominus \mathfrak{H}_2} \Sigma_{\mathfrak{D}\ominus\mathfrak{H}_2} 
+            +
+            \mathfrak{C}_{\mathfrak{D} \ominus \mathfrak{H}_1\ominus \mathfrak{H}_2} \Sigma_{\mathfrak{D}\ominus\mathfrak{H}_1\ominus \mathfrak{H}_2}
+        \end{aligned}
+    }.
+\] 
+The string operators that contain patch configurations and their corresponding coefficients can be written as the following forms.
+\[
+\left\{
+\begin{aligned}
+    & \mathfrak{C}_{\mathfrak{D}\ominus \mathfrak{H}_i } \Sigma_{\mathfrak{D} \ominus\mathfrak{H}_i } = 
+    \lr{\frac{\varphi(\mathfrak{D},\mathfrak{H}_i)\mathfrak{C}_{ \mathfrak{D}\ominus\mathfrak{H}_i }}{\mathfrak{C}_{\mathfrak{D}}} }
+    \Sigma_{\mathfrak{H}_1}
+    \mathfrak{C}_\mathfrak{D} \Sigma_\mathfrak{D} 
+    \equiv
+    c^\mathfrak{D}_1\Sigma_{\mathfrak{H}_1} \mathfrak{C}_\mathfrak{D} \Sigma_\mathfrak{D}
+    \\
+    & \mathfrak{C}_{\mathfrak{D}\ominus \mathfrak{H}_1\ominus \mathfrak{H}_2 } \Sigma_{\mathfrak{D} \ominus \mathfrak{H}_1\ominus \mathfrak{H}_2 } 
+    = 
+    \lr{
+    \frac{
+        \varphi(\mathfrak{H}_1,\mathfrak{H}_2\ominus\mathfrak{D}) 
+        \varphi(\mathfrak{H}_2,\mathfrak{D}) 
+        \mathfrak{C}_{ 
+            \mathfrak{D}\ominus\mathfrak{H}_1\ominus\mathfrak{H}_2 
+        }
+    }
+    {
+        \mathfrak{C}_{\mathfrak{D}}
+    } }
+    \Sigma_{\mathfrak{H}_1} 
+    \Sigma_{\mathfrak{H}_2}
+    \mathfrak{C}_\mathfrak{D} \Sigma_\mathfrak{D} 
+    \equiv
+    c^\mathfrak{D}_{12} \Sigma_{\mathfrak{H}_1} \Sigma_{\mathfrak{H}_2} \mathfrak{C}_\mathfrak{D} \Sigma_\mathfrak{D}
+\end{aligned}
+\right.
+\]
+After that, we obtain coefficients $\mathbf{c}_{\mathfrak{D}}^T = (1, c^{\mathfrak{D}}_1, c^\mathfrak{D}_2, c^\mathfrak{D}_{12})$ for each configuration $\mathfrak{D}$ in the subsystem $A$ as weights in front of the patch string operators. This way, we can separate the patch string operators from the string operators $\Sigma_{\mathfrak{D}}$ supported on the subsystem $A$. The patch string operators can be converted to a sum of projectors as follows, 
+\[
+\frac{1}{2^{2}}\lr{\mathds{1} + c^{\mathfrak{D}}_1\Sigma_{\mathfrak{H}_1} + c^{\mathfrak{D}}_2\Sigma_{\mathfrak{H}_2} + c^{\mathfrak{D}}_{12}\Sigma_{\mathfrak{H}_1}\Sigma_{\mathfrak{H}_2}}
+=
+\sum_{\lrg{s}} p_\mathfrak{D}^{(\lrg{s})} \prod_{i=1}^{2}\lr{\frac{\mathds{1} + s_i\Sigma_{\mathfrak{H}_i}}{2}}.
+\]
+To achieve this, the coefficients $\mathbf{c}_\mathfrak{D}$ and the weight $p_\mathfrak{D}^{(\lrg{s})}$ in front of each projector must satisfy the following relations
+\[
+\left\{
+\begin{aligned}
+    & p_\mathfrak{D}^{(++)} + p_\mathfrak{D}^{(+-)} + p_\mathfrak{D}^{(-+)} + p_\mathfrak{D}^{(--)} = 1 \\
+    & p_\mathfrak{D}^{(++)} + p_\mathfrak{D}^{(+-)} - p_\mathfrak{D}^{(-+)} - p_\mathfrak{D}^{(--)} = c^{\mathfrak{D}}_1 \\
+    & p_\mathfrak{D}^{(++)} - p_\mathfrak{D}^{(+-)} + p_\mathfrak{D}^{(-+)} - p_\mathfrak{D}^{(--)} = c^{\mathfrak{D}}_2 \\
+    & p_\mathfrak{D}^{(++)} - p_\mathfrak{D}^{(+-)} - p_\mathfrak{D}^{(-+)} + p_\mathfrak{D}^{(--)} = c^{\mathfrak{D}}_{12} 
+\end{aligned}
+\right.
+\]
+The first condition implies that the weights $p_\mathfrak{D}^{(\lrg{s})}$ can be interpreted as a probability distribution. One more condition we need to check is whether each weight $p_\mathfrak{D}^{(\lrg{s})}$ is positive, but I currently have no proof. Writing the above relations in matrix form, it happens that the transform matrix is the Hadamard matrix.
+\[
+\begin{pmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & 1 & -1 & -1 \\
+    1 & -1 & 1 & -1 \\
+    1 & -1 & -1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+    p_\mathfrak{D}^{(++)} \\
+    p_\mathfrak{D}^{(+-)} \\
+    p_\mathfrak{D}^{(-+)} \\
+    p_\mathfrak{D}^{(--)}
+\end{pmatrix}
+=
+H_4
+\begin{pmatrix}
+    p_\mathfrak{D}^{(++)} \\
+    p_\mathfrak{D}^{(+-)} \\
+    p_\mathfrak{D}^{(-+)} \\
+    p_\mathfrak{D}^{(--)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+    1 \\
+    c^{\mathfrak{D}}_1 \\
+    c^{\mathfrak{D}}_2 \\
+    c^{\mathfrak{D}}_{12}
+\end{pmatrix}.
+\]
+In general, this basis-changing trick applies to subsystems with an arbitrary number of holes, from which we obtain a generic relation
+\[
+\mathbf{p}_{\mathfrak{D}} = \frac{1}{2^g} H_{2^g} \mathbf{c}_\mathfrak{D}
+\]
+where $[\mathbf{p}_\mathfrak{D}]_{i} = p^{(\lrg{s}_i)}_\mathfrak{D}$ and $[\mathbf{c}_{\mathfrak{D}}]_{j} \propto \mathfrak{C}_{\mathfrak{D}\ominus\lrg{\mathfrak{H}}_j}/\mathfrak{C}_\mathfrak{D}$ are $2^g$-dimensional vectors. With this decomposition, the reduced density matrix of a subsystem with an arbitrary number of holes can be written as
 \begin{equation}
     \rho_A
     =
@@ -277,23 +384,11 @@ In the above formula, $g$ represents the number of holes inside the subsystem (g
         &\hat{\Pi}_g \equiv
         \prod_{n=1}^{g}\lr{\frac{\mathds{1} + W_{\mathcal{L}^{(n)}}}{2}} \\
         &\hat{\Pi}_\mathfrak{H}^{(\lrg{s})} \equiv 
-        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n\Sigma_{\mathfrak{H}^{(n)}}}{2}}  \\
-        & p_\mathfrak{D}^{(\lrg{s})} \equiv \prod_{n=1}^{g}p_{\mathfrak{D},n}^{(s_n)}
-        =
-        \frac{1}{2^g} \prod_{n=1}^{g} \lr{1 + s_n \frac{\varphi(\mathfrak{H}^{(n)},\mathfrak{D} )\mathfrak{C}_{\mathfrak{H}^{(n)}\ominus\mathfrak{D}}}{\mathfrak{C}_{\mathfrak{D}}}}
+        \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n\Sigma_{\mathfrak{H}^{(n)}}}{2}}  
     \end{aligned}
     \right.
 \end{equation}
-where $\mathcal{L}^{(n)}$ represents the non-contractible Wilson loop enclosing the $n$-th hole, and $\mathfrak{H}^{(n)}$ represents the patch configuration covering the $n$-th hole. The set $\{p_\mathfrak{D}^{(\lrg{s})} \}$ of each configuration class $[\mathfrak{D}]$ forms a probability distribution, which normalizes as follows,
-\begin{equation}\label{eq:patition-condition}
-  \sum_{\lrg{s}} p_\mathfrak{D}^{(\lrg{s})} 
-  = \sum_{\lrg{s}} \lr{\prod_{n=1}^{g}p_{\mathfrak{D},n}^{(s_n)}} 
-  =
-  \prod_{n=1}^{g}\lr{p_{\mathfrak{D},n}^{(+)} + p_{\mathfrak{D},n}^{(-)}} 
-  = 
-  1.
-\end{equation}
-The Hilbert space dimension of each sector can be computed straightforwardly
+where $\mathcal{L}^{(n)}$ represents the non-contractible Wilson loop enclosing the $n$-th hole, and $\mathfrak{H}^{(n)}$ represents the patch configuration covering the $n$-th hole. The set $\{p_\mathfrak{D}^{(\lrg{s})} \}$ of each configuration class $[\mathfrak{D}]$ forms a probability distribution. The Hilbert space dimension of each sector can be computed straightforwardly
 \[
 \Tr_A
 \lr{
@@ -480,21 +575,26 @@ where the electric fields are provided by the $b$-Majorana fermionic operators a
     \exp\lr{i\pi\oint_{\de\Gamma} E_\perp \mrm{d}\ell}
     \to 
     \prod_{\hat{\xi} \in \de \Gamma}\hat{\xi} 
+    =
+    \Sigma_{\mathfrak{H}}
     \to
     \prod_{i\in\Gamma}c_i
     \propto
     (-1)^{F_\Gamma} 
     \;; \quad F_\Gamma = \sum_{i\in\Gamma} n_i,
 \end{equation}
-where $E_\perp$ represents the electric field components perpendicular to the 't~Hooft loop direction. According to the divergence theorem, the relationship between the electric fields along the loop $\de\Gamma$ and the subsystem fermion parity can be translated to the Gauss law of the gauge theory,
+where $E_\perp$ represents the electric field components perpendicular to the 't~Hooft loop direction, and $(-1)^{F_\Gamma}$ stands for the subsystem fermion parity of the region $\Gamma$. According to the divergence theorem, the relationship between the electric fields along the loop $\de\Gamma$ and the subsystem fermion parity can be translated to the Gauss law of the gauge theory,
 \[
 \oint_{\de\Gamma} E_\perp \mrm{d}\ell = \sum_{i\in\Gamma} n_i \Rightarrow \dive E = \rho.
 \]
-In conclusion, the Gauss law of the gauge theory in the Kitaev model implies the equivalence between the 't~Hooft loop and the subsystem fermion parity. We can accordingly rewrite the patch projectors in terms of 't~Hooft loop operators enclosing each hole inside the multiply-connected subsystem.
+This is a generalization of the elementary Gauss law $b^x_ib^y_ib^z_ic_i = \mathds{1}$ which forms an elementary triangular loop enclosing site $i$. In conclusion, the Gauss law of the gauge theory in the Kitaev model implies the equivalence between the 't~Hooft loop and the subsystem fermion parity. We can accordingly rewrite the patch projectors in terms of 't~Hooft loop operators enclosing each hole inside the multiply-connected subsystem.
 \begin{equation}\label{eq:thooft-loop-projector}
     \hat{\Pi}_\mathfrak{H}^{(\lrg{s})} 
     = 
-    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n \tilde{T}_{\de B^{(n)}}}{2}}.
+    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n \tilde{T}_{\de B^{(n)}}}{2}}
+    =
+    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n (-1)^{F_{B^{(n)}}}}{2}}
+    .
 \end{equation}
 In Ref.\cite{Xu-Rakovszky-Knap-Pollmann_2025}, the topological entanglement entropy is interpreted as a consequence of \textbf{spontaneously broken 't~Hooft 1-form symmetry}. Formally, the state $\ket{\psi}$ breaks the 't~Hooft 1-form symmetry if $T\ket{\psi}$ is orthogonal to $\ket{\psi}$. In the Kitaev model, the 't~Hooft loop is not a symmetry since it doesn't commute with the Hamiltonian. However, it does serve as a source to produce the topological entanglement entropy as discussed in previous sections. 
 
