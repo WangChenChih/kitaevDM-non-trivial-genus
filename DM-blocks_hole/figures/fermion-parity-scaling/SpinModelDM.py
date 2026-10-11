@@ -86,7 +86,7 @@ class SpinSystem:
         self._CoeTable_loaded = False   # reload the CoeTable if the parameter is changed
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
     
@@ -100,7 +100,7 @@ class SpinSystem:
         self._CoeTable_loaded = False   # reload the CoeTable if the parameter is changed
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
     
@@ -114,7 +114,7 @@ class SpinSystem:
         self._CoeTable_loaded = False   # reload the CoeTable if the parameter is changed
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
 
@@ -130,7 +130,7 @@ class SpinSystem:
             self.calculate_CorrTable()
         self._CoeTable_loaded = False   # reload the CoeTable if the parameter is changed
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
 
@@ -144,7 +144,7 @@ class SpinSystem:
         self._CoeTable_loaded = False
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
 
@@ -160,7 +160,7 @@ class SpinSystem:
         self._CoeTable_loaded = False   # reload the CoeTable if the parameter is changed
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         self.approx_bound = None
         return
     
@@ -174,7 +174,7 @@ class SpinSystem:
     
     @property
     def width(self):
-        return self._width
+        return int(self._width)
     @width.setter
     def width(self, width:int):
         self._width = width
@@ -183,12 +183,12 @@ class SpinSystem:
         self._CoeTable_loaded = False
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         return
 
     @property
     def height(self):
-        return self._height
+        return int(self._height)
     @height.setter
     def height(self, height:int):
         self._height = height
@@ -197,7 +197,7 @@ class SpinSystem:
         self._CoeTable_loaded = False
         self._CoeTable = None
         self._CorrTable_loaded = False
-        self._CoeTable = None
+        self._CorrTable = None
         return
 
     @property
@@ -285,11 +285,14 @@ class SpinSystem:
         """
         Two-points correlation function <-ic_{n1}c_{n2}>. Notice the existance of the imaginary number -i
         """
-        int_value, err = integrate.dblquad(self.corr_integrand, 
-                                            0, 1, 
-                                            0, 1, 
-                                            args=(dx, dy, pair_type))
-        return  int_value
+        if (pair_type == 'AA' or pair_type == 'BB') and self.h == 0:
+            return 0
+        else:
+            int_value, err = integrate.dblquad(self.corr_integrand, 
+                                                0, 1, 
+                                                0, 1, 
+                                                args=(dx, dy, pair_type))
+            return  int_value
         
     def corr_thermo_limit_engine(self, n1:int, n2:int)->float:
         """
@@ -324,36 +327,39 @@ class SpinSystem:
         The default value of ``tot_size`` is [self.width, self.height] we set in the beginning.
         Notice that the value of ``tot_size[1]`` (height) can be 'infty', which means the entire system is a infinitly long cylinder streching along z-direction.
         """
-        if tot_size is None:    # default: the total size is exactly the system size we set in the beginning with PBC
-            tot_size = [self.width, self.height]
-            tot_num = tot_size[0] * tot_size[1]
+        if (pair_type == 'AA' or pair_type == 'BB') and self.h == 0:
+            return 0
         else:
-            if tot_size[1] == 'infty':  # infinitly long cylinder streching along z-direction.
-                tot_num = tot_size[0]
-            else:
+            if tot_size is None:    # default: the total size is exactly the system size we set in the beginning with PBC
+                tot_size = [self.width, self.height]
                 tot_num = tot_size[0] * tot_size[1]
+            else:
+                if tot_size[1] == 'infty':  # infinitly long cylinder streching along z-direction.
+                    tot_num = tot_size[0]
+                else:
+                    tot_num = tot_size[0] * tot_size[1]
 
-        if tot_size[1] == 'infty':
-            corr_fun = 0
-            for nx in range(int(tot_size[0]/2)):
-                k1 = nx / (tot_size[0]/2)
-                # R, I, epsilon, Delta = self.Rk(k1=k1, k2=k2), self.Ik(k1=k1, k2=k2), self.ep(k1=k1, k2=k2), self.Delta(k1=k1, k2=k2)
-                int_func = lambda k: self.corr_integrand(k1=k1, k2=k, 
-                                                            dx=dx, dy=dy,
-                                                            pair_type=pair_type)
-                val, err = integrate.quad(int_func, 0, 1)
-                corr_fun += val
-        else:
-            corr_fun = 0
-            for nx in range(int(tot_size[0]/2)):
-                for ny in range(tot_size[1]):
+            if tot_size[1] == 'infty':
+                corr_fun = 0
+                for nx in range(int(tot_size[0]/2)):
                     k1 = nx / (tot_size[0]/2)
-                    k2 = ny / tot_size[1]
                     # R, I, epsilon, Delta = self.Rk(k1=k1, k2=k2), self.Ik(k1=k1, k2=k2), self.ep(k1=k1, k2=k2), self.Delta(k1=k1, k2=k2)
-                    corr_fun += self.corr_integrand(k1=k1, k2=k2, 
-                                                    dx=dx, dy=dy,
-                                                    pair_type=pair_type)
-        return (2/tot_num) * corr_fun
+                    int_func = lambda k: self.corr_integrand(k1=k1, k2=k, 
+                                                                dx=dx, dy=dy,
+                                                                pair_type=pair_type)
+                    val, err = integrate.quad(int_func, 0, 1)
+                    corr_fun += val
+            else:
+                corr_fun = 0
+                for nx in range(int(tot_size[0]/2)):
+                    for ny in range(tot_size[1]):
+                        k1 = nx / (tot_size[0]/2)
+                        k2 = ny / tot_size[1]
+                        # R, I, epsilon, Delta = self.Rk(k1=k1, k2=k2), self.Ik(k1=k1, k2=k2), self.ep(k1=k1, k2=k2), self.Delta(k1=k1, k2=k2)
+                        corr_fun += self.corr_integrand(k1=k1, k2=k2, 
+                                                        dx=dx, dy=dy,
+                                                        pair_type=pair_type)
+            return (2/tot_num) * corr_fun
 
     def corr_engine(self, n1:int, n2:int, tot_size:list[int,int]=None)->float:
         """
@@ -395,8 +401,11 @@ class SpinSystem:
                 return self.corr_thermo_limit_engine_c(dx=dx, dy=dy, pair_type=pair_type)
             else:
                 return self.corr_engine_c(dx=dx, dy=dy, pair_type=pair_type, tot_size=tot_size)
-            
+
         CorrTable = {}
+        run_tot = int(len(np.arange(-int(self.width/2), int(self.width) + 1)) * len(np.arange(-int(self.height), int(self.height)+1)))
+        count = 0
+        progress = 1
         for x in np.arange(-int(self.width/2), int(self.width) + 1):
             for y in np.arange(-int(self.height), int(self.height)+1):
                 # print('\033[34m%d-th corr function\033[0m' % n)
@@ -408,6 +417,11 @@ class SpinSystem:
                 CorrTable['(%d,%d)AA'%(x,y)] = corr_func(dx=x, dy=y, pair_type='AA') 
                 # BB pairing
                 CorrTable['(%d,%d)BB'%(x,y)] = corr_func(dx=x, dy=y, pair_type='BB') 
+
+                count += 1
+                if int(10 * count / run_tot) >= progress:
+                    print('\033[34mProgress: %d/10\033[0m' % (progress))
+                    progress += 1
         
         if self.thermo_limit:
             filename = 'CorrTable_thermo_limit.json'
@@ -458,9 +472,7 @@ class SpinSystem:
             else:
                 corr_value = self.corr_engine(n1=n1, n2=n2)
         else:
-            if self._CorrTable_loaded:          # use the loaded correlation table directly to avoid opening the CorrTable repeatedly
-                CorrTable = self._CorrTable
-            else:
+            if not self._CorrTable_loaded:  # use the loaded correlation table directly to avoid opening the CorrTable repeatedly
                 with open(self.datapath + '/' + filename, "r") as file:
                     CorrTable = json.load(file)
                 self._CorrTable = CorrTable     # update self._CorrTable
@@ -471,13 +483,13 @@ class SpinSystem:
             dx, dy = x2 - x1, y2 - y1 
 
             if mu1==1 and mu2==0:   # AB pairing
-                corr_value = CorrTable['(%d,%d)AB'%(dx,dy)]
+                corr_value = self._CorrTable['(%d,%d)AB'%(dx,dy)]
             elif mu1==0 and mu2==1:   # BA pairing
-                corr_value = CorrTable['(%d,%d)BA'%(dx,dy)]
+                corr_value = self._CorrTable['(%d,%d)BA'%(dx,dy)]
             elif mu1==1 and mu2==1:   # AA pairing
-                corr_value = CorrTable['(%d,%d)AA'%(dx,dy)]
+                corr_value = self._CorrTable['(%d,%d)AA'%(dx,dy)]
             else:                      # BB pairing
-                corr_value = CorrTable['(%d,%d)BB'%(dx,dy)]
+                corr_value = self._CorrTable['(%d,%d)BB'%(dx,dy)]
 
         if not corr_table_sys_size is None: # restore the system size
             self.width, self.height = width_origin, height_origin
