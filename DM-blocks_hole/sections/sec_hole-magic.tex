@@ -1,0 +1,70 @@
+\section{Magic of Non-Simply Connected Subsystems}
+The reduced density matrix of a subsystem with a hole inside takes the following form
+\[
+    \rho_{A}
+    =
+    \frac{1}{2^{N^A - N^A_p - 2g}}
+    \hat{\Pi}_A
+     \hat{\Pi}_{\mathcal{L}}
+    \sum_{[\mathfrak{D}]\subset A}
+    \lr{
+    \frac{1}{2^g}
+    \sum_{\lrg{\mathfrak{H}}}
+        \mathfrak{C}_{\mathfrak{D}\ominus\lrg{\mathfrak{H}}} \Sigma_{\mathfrak{D}\ominus\lrg{\mathfrak{H}}} 
+    }.
+\] 
+The summation of the expectation value of Pauli strings to the power four is then
+\[
+    \frac{1}{2^{N^A}}
+    \sum_{\mathsf{S}\in\tilde{\mathcal{P}}_{N^A}}
+    \lrm{\Tr_A\lr{\rho_A\mathsf{S}}}^{4}
+    =
+    \frac{1}{2^{N^A - N_p^A - 2g}}
+    \sum_{[\mathfrak{D}] \subset A}
+    \lrm{
+        \frac{1}{2^g}
+        \sum_{\lrg{\mathfrak{H}}} \lr{\frac{\mathfrak{C}_{\mathfrak{\mathfrak{D}\ominus\lrg{\mathfrak{H}}}}}{\mathfrak{C}_\mathfrak{D}}}^4
+    }
+    \mathfrak{C}_\mathfrak{D}^4
+\]
+Because $\mathfrak{C}_\mathfrak{D}^2 \geq \mathfrak{C}_{\mathfrak{D}\ominus\lrg{\mathfrak{H}}}^2$, the series in the square bracket is less than unity,
+\[
+\frac{1}{2^g}
+\sum_{\lrg{\mathfrak{H}}} \lr{\frac{\mathfrak{C}_{\mathfrak{\mathfrak{D}\ominus\lrg{\mathfrak{H}}}}}{\mathfrak{C}_\mathfrak{D}}}^4
+\leq
+\frac{1}{2^g}
+\sum_{n=1}^{2^g}
+=
+1.
+\]
+Therefore, the magic part of the subsystem 2-SRE is greater than that computed by the Majorana state with the topological boundary correction,
+\[
+    -\ln\lrm{
+        \frac{1}{2^{N^A}}
+        \sum_{\mathsf{S}\in\tilde{\mathcal{P}}_{N^A}}
+        \lrm{\Tr_A\lr{\rho_A\mathsf{S}}}^{4}
+    }
+    \geq
+    -\ln\lr{
+        \frac{1}{2^{N^A - N_p^A - 2g}}
+        \sum_{[\mathfrak{D}] \subset A}
+        \mathfrak{C}_\mathfrak{D}^4
+    }.
+\]
+% As a result, the subsystem SRE computed using the physical spin RDM $\rho_A$ is greater than that computed using the equivalent Majorana fermionic RDM $\rho_A^F$.
+% \begin{equation}\label{eq:RDM-SRE-g}
+%     \tilde{M}_2\lr{\rho_A} 
+%     \geq 
+%     -\ln\lr{
+%         \frac{
+%         \sum_{[\mathfrak{D}]\subset A} \mathfrak{C}_\mathfrak{D}^4 
+%         }
+%         {
+%         \sum_{[\mathfrak{D}]\subset A} \eta_\mathfrak{D} \mathfrak{C}_\mathfrak{D}^2
+%         } 
+%     }
+%     =
+%     \tilde{M}_2\lr{\rho_A^F}
+%     .
+% \end{equation}
+
