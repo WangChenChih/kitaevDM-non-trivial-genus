@@ -774,18 +774,95 @@ This is a generalization of the elementary Gauss law $b^x_ib^y_ib^z_ic_i = \math
 In Ref.\cite{Xu-Rakovszky-Knap-Pollmann_2025}, the topological entanglement entropy is interpreted as a consequence of \textbf{spontaneously broken 't~Hooft 1-form symmetry}. Formally, the state $\ket{\psi}$ breaks the 't~Hooft 1-form symmetry if $T\ket{\psi}$ is orthogonal to $\ket{\psi}$. In the Kitaev model, the 't~Hooft loop is not a symmetry since it doesn't commute with the Hamiltonian. However, it does serve as a source to produce the topological entanglement entropy as discussed in previous sections. 
 
 \section{Complement Trick}
+In this section, we provide another insight into how the entanglement spectrum depends on the subsystem topology. We will show that it arises from the \textbf{difference in fermion-parity behavior between the physical Kitaev model and its equivalent Majorana system}. 
 \begin{figure}[H]
     \centering
-    (a)\includegraphics[width=0.3\linewidth]{DM-blocks_hole/figures/annulus.pdf}
-    (b)\includegraphics[width=0.3\linewidth]{DM-blocks_hole/figures/two-holes-region.pdf}
-    (c)\includegraphics[width=0.3\linewidth]{DM-blocks_hole/figures/two-holes-region_complement.pdf}
+    (a)\includegraphics[width=0.3\linewidth]{figures/annulus.pdf}
+    (b)\includegraphics[width=0.3\linewidth]{figures/two-holes-region.pdf}
+    (c)\includegraphics[width=0.3\linewidth]{figures/two-holes-region_complement.pdf}
     \caption{An annulus is topologically equivalent to creating two vacancies in the universe, and its complement is composed of two disconnected subregions. Suppose the state defined on the universe (the entire system) is pure; then the entanglement entropy of the subsystem $A$ should be equivalent to the entanglement entropy of the union of two holes $B_0\cup B_1$.}
     \label{fig:annulus-topo}
 \end{figure}
-As illustrated in Fig.~\ref{fig:annulus-topo}, the entanglement entropy of an annulus-shaped subsystem is topologically equivalent to the entanglement entropy of a subsystem composed of two disconnected regions if the entire state is pure. Below, we discuss the entanglement entropy of the Kitaev model for subsystems illustrated in Fig.~\ref{fig:annulus-topo}(c).
+As illustrated in Fig.~\ref{fig:annulus-topo}, the entanglement entropy of an annulus-shaped subsystem is topologically equivalent to the entanglement entropy of a subsystem composed of two disconnected regions if the entire state is pure. Mathematically, we have
+\[
+S_{A} = S_{B_0\cup B_1}
+\]
+Below, we discuss the entanglement entropy $S_{B_0\cup B_1}$ of the Kitaev model for the subsystem $B_0\cup B_1$ illustrated in Fig.~\ref{fig:annulus-topo}(c).
 
-We first 
+\begin{figure}[H]
+    \centering
+    (a)\includegraphics[width=0.3\linewidth]{figures/separate-fermions.pdf}
+    \hspace{5mm}
+    (b)\includegraphics[width=0.3\linewidth]{figures/separate-fermions_string.pdf}
+    \caption{(a) Creating two Majorana fermions separately in two disconnected regions in a pure Majorana system is completely allowed. (b) However, in the Kitaev model, creating two fermions in two separated regions requires a string across these two regions, and this string operator is forbidden to appear in the reduced density matrix of the subsystem $B_0\cup B_1$.}
+    \label{fig:odd-fermion}
+\end{figure}
+We note that the Kitaev model is not completely equivalent to its Majorana counterpart because the fermion parity is realized by Pauli strings under a stricter condition. As illustrated in Fig.~\ref{fig:odd-fermion}(a), a basis $c_1c_2$ is allowed to appear in the fermionic density matrix $\rho^F_{B_0\cup B_1}$ even if $c_1$ and $c_2$ are located in two disconnected subregions, respectively. However, it is not the case in the Kitaev model, where realizing two fermions requires a non-local string operator $\Sigma_{\overline{12}}$ connecting the two fermions. However, it is inevitable for the string $\Sigma_{\overline{12}}$ to cross the environment $A$ if the two Majorana fermions $c_1$ and $c_2$ are located in two disconnected subregions, respectively. As a consequence, this type of string operator doesn't appear in the physical reduced density matrix $\rho_{B_0\cup B_1}$. In other words, \textbf{a fermion-parity-odd term is not allowed in each simply connected subregion, even if the overall fermion-parity across the entire subsystem of such a term is even}. 
 
+\[
+\hat{\Pi}_F 
+= 
+\prod_{n=\alert{0}}^{g}
+\lr{
+\frac{1 + (-1)^{F_n}}
+{2}
+}
+=
+\prod_{n=\alert{1}}^{g}
+\lr{
+\frac{1 + (-1)^{F_n}}
+{2}
+}
+\]
+
+\[
+\prod_{n=\alert{0}}^{g} (-1)^{F_n} = (-1)^{F_A} = 1
+\]
+
+\[
+(-1)^{F_n} c_i = - c_i (-1)^{F_n} \quad \text{if $i\in B_n$}
+\]
+
+\[
+\rho^F_{B_0\cup B_1} = 
+\hat{\Pi}_F 
+\lr{
+    \frac{1}{2^{\abs{B_0\cup B_1}}}
+    \sum_{[\mathfrak{D}]\subset B_0\cup B_1}
+    \mathfrak{C}_\mathfrak{D} \mathcal{M}_\mathfrak{D}
+}
+\hat{\Pi}_F
+\]
+
+\[
+[\Sigma_\mathfrak{D}, \Sigma_{\mathfrak{D}_{\mrm{DM}}^{(n)}}]
+=
+0
+\quad \forall \mathfrak{D} \subset B_0\cup B_1
+\]
+$(-1)^{F_{n}}\leftrightsquigarrow \Sigma_{\mathfrak{D}_{\mrm{DM}}^{(n)}}$
+
+\[
+\rho_{B_0\cup B_1}
+=
+\frac{1}{2^{1+g}}
+\rho_{B_0\cup B_1}^{(++)}
+\oplus
+\rho_{B_0\cup B_1}^{(--)}
+\oplus
+\rho_{B_0\cup B_1}^{(+-)}
+\oplus
+\rho_{B_0\cup B_1}^{(-+)}
+\]
+However, no unitary operators that commute with the reduced density matrix and connect these four blocks simultaneously. Therefore, in principle, the four blocks listed in the above equation are not identical. After the projection $\hat{\Pi}_F$, only the $(++)$ sector survives. 
+\[
+\rho_A 
+\sim 
+\frac{\hat{\Pi}_F\rho^F_{B_0\cup B_1}\hat{\Pi}_F}{\Tr \hat{\Pi}_F} 
+= 
+\rho_{B_0\cup B_1}^{(++)}
+\]
+However, since we have no clues about how the four sectors are correlated at the present stage, the Majorana entanglement spectrum gives no hint to the physical entanglement spectrum $\hat{\Pi}_F \rho^F_{A} \hat{\Pi}_F$
 \input{sections/sec_hole-magic}
 
 \appendix
