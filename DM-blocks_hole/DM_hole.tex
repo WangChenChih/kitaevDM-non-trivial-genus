@@ -815,14 +815,17 @@ The subsystem-wise fermionic conservation is equivalent to the conservation of $
 \text{Degree of degeneracy} = \frac{2^{\abs{\de\overline{A}}/2}}{2^{N^{\overline{A}}_\de}} = 2^{\abs{\de A}/2 - N^A_\de},
 \]
 in agreement with the analysis \eqref{eq:deg-degeneracy}, where we have used $\abs{\de A} = \abs{\de \overline{A}}$ and $N^{A}_\de = N^{\overline{A}}_\de$. 
-\[
-(-1)^{F_n} 
-\leftrightsquigarrow 
-\prod_{\hat{\xi}\in\de B_n(\mrm{out})}\hat{\xi}
-= 
-\lr{\text{up to some Wilson loops}}
-\prod_{\hat{\xi} \in \de B_n(\mrm{in})}\hat{\xi} 
-\]
+
+Now we return to the fundamentals of the complement trick. The equivalence between the two complement pictures relies on the fact that reversing the directions of the residual electric fields leaves the physics intact, because the $\xi$-operators in the \textbf{original problem} point \textbf{inward} to the hole regions, while the $\xi$-operators in the \textbf{complement picture} point \textbf{outward} from the hole regions. The equivalence between these two definitions of $\xi$-operators is based on the following equation, which says that the inward $\xi$-operators group is equivalent to the outward one up to some Wilson loops.  
+\begin{equation}\label{eq:inner-outer-equivalent}
+    (-1)^{F_n} 
+    \leftrightsquigarrow 
+    \prod_{\hat{\xi}\in\de B_n(\mrm{out})}\hat{\xi}
+    = 
+    \lr{\text{up to some Wilson loops}}
+    \prod_{\hat{\xi} \in \de B_n(\mrm{in})}\hat{\xi}. 
+\end{equation}
+An illustration of an example is given in Fig.~\eqref{fig:inner-outer-equivalence}.
 %
 % To implement this constraint, we define the projector $\hat{\Pi}_F$ as follows.
 % \begin{equation}\label{eq:parity-complement=problem}
@@ -871,7 +874,14 @@ in agreement with the analysis \eqref{eq:deg-degeneracy}, where we have used $\a
 % \frac{\hat{\Pi}_F\rho^F_{\overline{A}}\hat{\Pi}_F}{\Tr_{\overline{A},F} \hat{\Pi}_F} 
 % \]
 % However, since we have no clues about how the four sectors are correlated at the present stage, the Majorana entanglement spectrum gives no hint to the physical entanglement spectrum.
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/inner-outer-assemble_1.pdf}
+    \hspace{2mm}
+    \includegraphics[width=0.4\linewidth]{figures/inner-outer-assemble_2.pdf}
+    \caption{A pictorial illustration of Eq.~\eqref{eq:inner-outer-equivalent}. Combining the $\xi$-operators pointing a certain region inwards and those pointing outwards results in a Wilson loop (or an assembly of Wilson loops) around the boundary of the region. In other words, the combination of inner $\xi$-operators is equivalent to the combination of outer $\xi$-operators in a 1-form symmetry sense. The thick dentate segments represent $\xi$-operators, and the blurred loops represent Wilson loops.}
+    \label{fig:inner-outer-equivalence}
+\end{figure}
 
 \input{sections/sec_hole-magic}
 
