@@ -116,7 +116,7 @@
 \fontsize{12pt}{16pt}\selectfont
 
 \begin{abstract}
-    We discuss the structure of reduced density matrices of non-simply connected subsystems. Subtle though the mathematical form may first appear, it turns out that the residual electric fields along the inner boundaries provide an additional source that organizes the reduced density as we did in the previous work. As a result, the organizing structure of the entanglement spectrum still applies, and the Yao-Qi formula for calculating entanglement entropy is still valid.
+    We discuss the structure of reduced density matrices of non-simply connected subsystems. The subtle difference in fermion-parity properties between the physical Kitaev model and its Majorana equivalence influences the structure of the reduced density matrix and the entanglement spectrum. As a result, although the block-diagonal organization remains, the detailed entanglement spectrum changes, and the Yao-Qi method must be modified. 
 \end{abstract}
 
 % \tableofcontents
@@ -635,9 +635,9 @@ Consequently, the non-contractible Wilson operators in $\mathfrak{W}_d$ do not c
 \text{Degree of degeneracy} = \frac{2^{L}}{2^{N^A_\de}} = 2^{L - N^A_\de}
 \]
 If all the boundaries have even length, the number of residual electric field configurations $L$ reduces to $L = \abs{\de A}/2$, which reproduces the conventional result
-\[
-\text{Degree of degeneracy} = 2^{\abs{\de A}/2 - N^A_\de} = \exp \lr{S^A_G}
-\]
+\begin{equation}\label{eq:deg-degeneracy}
+    \text{Degree of degeneracy} = 2^{\abs{\de A}/2 - N^A_\de} = \exp \lr{S^A_G}
+\end{equation}
 
 According to the above discussion, each subblock corresponds to a specific configuration of $\xi$'s eigenvalues along the boundary, but we also know that the Wilson operators can relate only blocks with the same $\xi$-parity on each boundary. Therefore, the projector onto the subblock represented by the configuration $\lrg{\xi}$ reads 
 \begin{equation}
@@ -744,15 +744,15 @@ Aside from the Wilson loops, the 't~Hooft loops should also be discussed since t
     \exp\lr{i\pi\oint_{\mathcal{C}} E_\perp \mrm{d}\ell},
 \]
 where the electric fields are provided by the $b$-Majorana fermionic operators along the loop $\mathcal{C}$. The above interpretation, combined with our discussions on the relationship between the patch string operators and electric fields, leads to a picture that the 't~Hooft loop, which is equivalent to the electric field parity along the loop, is also related to the subsystem fermion parity of the region enclosed by the loop. Such a relationship is formulated mathematically as follows, 
-\begin{equation}
+\begin{equation}\label{eq:parity-relations}
     \tilde{T}_{\de\Gamma}
     =
     \exp\lr{i\pi\oint_{\de\Gamma} E_\perp \mrm{d}\ell}
-    \to 
+    \leftrightsquigarrow
     \prod_{\hat{\xi} \in \de \Gamma}\hat{\xi} 
     =
     \Sigma_{\mathfrak{H}}
-    \to
+    \leftrightsquigarrow
     \prod_{i\in\Gamma}c_i
     \propto
     (-1)^{F_\Gamma} 
@@ -768,101 +768,111 @@ This is a generalization of the elementary Gauss law $b^x_ib^y_ib^z_ic_i = \math
     = 
     \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n \tilde{T}_{\de B^{(n)}}}{2}}
     =
-    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n (-1)^{F_{B^{(n)}}}}{2}}
+    \prod_{n=1}^{g}\lr{\frac{\mathds{1} + s_n (-1)^{F_n}}{2}}
     .
 \end{equation}
 In Ref.\cite{Xu-Rakovszky-Knap-Pollmann_2025}, the topological entanglement entropy is interpreted as a consequence of \textbf{spontaneously broken 't~Hooft 1-form symmetry}. Formally, the state $\ket{\psi}$ breaks the 't~Hooft 1-form symmetry if $T\ket{\psi}$ is orthogonal to $\ket{\psi}$. In the Kitaev model, the 't~Hooft loop is not a symmetry since it doesn't commute with the Hamiltonian. However, it does serve as a source to produce the topological entanglement entropy as discussed in previous sections. 
 
-\section{Complement Trick}
+\section{Disconnected Regions and Complement Picture}
 In this section, we provide another insight into how the entanglement spectrum depends on the subsystem topology. We will show that it arises from the \textbf{difference in fermion-parity behavior between the physical Kitaev model and its equivalent Majorana system}. 
 \begin{figure}[H]
     \centering
-    (a)\includegraphics[width=0.3\linewidth]{figures/annulus.pdf}
-    (b)\includegraphics[width=0.3\linewidth]{figures/two-holes-region.pdf}
-    (c)\includegraphics[width=0.3\linewidth]{figures/two-holes-region_complement.pdf}
-    \caption{An annulus is topologically equivalent to creating two vacancies in the universe, and its complement is composed of two disconnected subregions. Suppose the state defined on the universe (the entire system) is pure; then the entanglement entropy of the subsystem $A$ should be equivalent to the entanglement entropy of the union of two holes $B_0\cup B_1$.}
+    (a)\includegraphics[width=0.25\linewidth]{figures/annulus.pdf}
+    \hspace{5mm}
+    (b)\includegraphics[width=0.25\linewidth]{figures/two-holes-region.pdf}
+    \hspace{5mm}
+    (c)\includegraphics[width=0.25\linewidth]{figures/two-holes-region_complement.pdf}
+    \caption{An annulus is topologically equivalent to creating two vacancies in the universe, and its complement is composed of two disconnected subregions. Suppose the state defined on the universe (the entire system) is pure; then the entanglement entropy of the subsystem $A$ should be equivalent to the entanglement entropy of the union of two holes $\overline{A} = B_0\cup B_1$.}
     \label{fig:annulus-topo}
 \end{figure}
 As illustrated in Fig.~\ref{fig:annulus-topo}, the entanglement entropy of an annulus-shaped subsystem is topologically equivalent to the entanglement entropy of a subsystem composed of two disconnected regions if the entire state is pure. Mathematically, we have
 \[
-S_{A} = S_{B_0\cup B_1}
+S_{A} = S_{\overline{A}} = S_{B_0\cup B_1}
 \]
-Below, we discuss the entanglement entropy $S_{B_0\cup B_1}$ of the Kitaev model for the subsystem $B_0\cup B_1$ illustrated in Fig.~\ref{fig:annulus-topo}(c).
+Furthermore, the entanglement spectrum of the original problem and its complement are also identical. This is what I call the \textit{complement method}, in which I switch the environment and the system such that the original geometry is converted to a union of disconnected subsystems. Below, we discuss the entanglement entropy $S_{B_0\cup B_1}$ of the Kitaev model for the subsystem $B_0\cup B_1$ illustrated in Fig.~\ref{fig:annulus-topo}(c).
 
 \begin{figure}[H]
     \centering
     (a)\includegraphics[width=0.3\linewidth]{figures/separate-fermions.pdf}
     \hspace{5mm}
     (b)\includegraphics[width=0.3\linewidth]{figures/separate-fermions_string.pdf}
-    \caption{(a) Creating two Majorana fermions separately in two disconnected regions in a pure Majorana system is completely allowed. (b) However, in the Kitaev model, creating two fermions in two separated regions requires a string across these two regions, and this string operator is forbidden to appear in the reduced density matrix of the subsystem $B_0\cup B_1$.}
+    \caption{(a) Creating two Majorana fermions separately in two disconnected regions in a pure Majorana system is valid. (b) However, in the Kitaev model, creating two fermions in two separated regions requires a string across them, and this string operator is forbidden to appear in the complement reduced density matrix $\rho_{\overline{A}}$ of the subsystem $\overline{A} = B_0\cup B_1$.}
     \label{fig:odd-fermion}
 \end{figure}
-We note that the Kitaev model is not completely equivalent to its Majorana counterpart because the fermion parity is realized by Pauli strings under a stricter condition. As illustrated in Fig.~\ref{fig:odd-fermion}(a), a basis $c_1c_2$ is allowed to appear in the fermionic density matrix $\rho^F_{B_0\cup B_1}$ even if $c_1$ and $c_2$ are located in two disconnected subregions, respectively. However, it is not the case in the Kitaev model, where realizing two fermions requires a non-local string operator $\Sigma_{\overline{12}}$ connecting the two fermions. However, it is inevitable for the string $\Sigma_{\overline{12}}$ to cross the environment $A$ if the two Majorana fermions $c_1$ and $c_2$ are located in two disconnected subregions, respectively. As a consequence, this type of string operator doesn't appear in the physical reduced density matrix $\rho_{B_0\cup B_1}$. In other words, \textbf{a fermion-parity-odd term is not allowed in each simply connected subregion, even if the overall fermion-parity across the entire subsystem of such a term is even}. 
-
+We note that the Kitaev model is not completely equivalent to its Majorana counterpart because the fermion parity is realized by Pauli strings under a stricter condition. As illustrated in Fig.~\ref{fig:odd-fermion}(a), a basis $c_1c_2$ is allowed to appear in the fermionic density matrix $\rho^F_{B_0\cup B_1}$ even if $c_1$ and $c_2$ are located in two disconnected subregions, respectively. However, it is not the case in the Kitaev model, where realizing two fermions requires a non-local string operator $\Sigma_{\overline{12}}$ connecting the two fermions. However, it is inevitable for the string $\Sigma_{\overline{12}}$ to cross the environment $A$ if the two Majorana fermions $c_1$ and $c_2$ are located in two disconnected subregions, respectively. As a consequence, this type of string operator doesn't appear in the physical reduced density matrix $\rho_{B_0\cup B_1}$. In other words, \textbf{a fermion-parity-odd term is not allowed in each simply connected subregion, even if the overall fermion-parity across the entire subsystem of such a term is even}. This constraint results in the \textit{physical}\footnote{Here, the term \textit{physical} means the Majorana fermionic state that satisfies the fermion parity constraint discussed previously. Not to be confused with the state in the physical spin representation.} Majorana reduced density matrix for subsystems composed of disconnected components.
+\begin{equation}\label{eq:phys-majoanara-rho}
+    \rho^{F(\mrm{phys})}_{\overline{A}} = 
+    \frac{1}{2^{N^{\overline{A}}/2}}
+    \sum'_{\mrm{EP}(\mathfrak{D})\subset \overline{A}}
+    \mathfrak{C}_\mathfrak{D} \mathcal{M}_\mathfrak{D}.
+\end{equation}
+The primed sum in Eq.~\eqref{eq:phys-majoanara-rho} sums over configurations satisfying the condition that there are an even number of Majorana fermions in each simply-connected component of $\overline{A}$. The constraint on subsystem fermion parity naturally leads to the fact that the subsystem fermion parity operator of each component $B_n$ commutes with the reduced density matrix $\rho_{\overline{A}}^{F(\mrm{phys})}$  
 \[
-\hat{\Pi}_F 
+[(-1)^{F_n}, \mathcal{M}_{\mathfrak{D}}] = 0 \Longrightarrow [(-1)^{F_n}, \rho^{F(\mrm{phys})}_{\overline{A}}] = 0 \quad\forall n
+\]
+The subsystem-wise fermionic conservation is equivalent to the conservation of $\xi$-parity on each boundary of $A$ in the original problem, as we showed in the previous section that the $\xi$-parity can be interpreted as the subsystem fermion parity due to Gauss' law of the gauge theory. The conservation of subsystem fermion parity implies that the degree of degeneracy in the entanglement spectrum also satisfies the prediction given by the picture where open Wilson operators serve as unitary transforms connecting the subblocks labeled by the $\xi$-configurations. Similarly, we can still define the $\xi$-operators along each separated boundary. In principle, the $\xi$-operators defined along the boundaries a $\abs{\de \overline{A}}/2$-fold degeneracy. However, the conservation of subsystem fermion parity reduces the degree of degeneracy\footnote{The reduction in the degeneracy can also be explained by the usual picture: A single open Wilson operator can only be defined inside a certain connected subregion. Therefore, it flips an even number of $\xi$-eigenvalues on the same boundary at the same time, and the $\xi$-parity of that subregion remains unchanged. }. Because $\overline{A}$ has $N^{\overline{A}}_{\de}$ separated components, the reduction in the degree of degeneracy is therefore $2^{N^{\overline{A}}_\de}$. This results in the final degree of degeneracy in the entanglement spectrum
+\[
+\text{Degree of degeneracy} = \frac{2^{\abs{\de\overline{A}}/2}}{2^{N^{\overline{A}}_\de}} = 2^{\abs{\de A}/2 - N^A_\de},
+\]
+in agreement with the analysis \eqref{eq:deg-degeneracy}, where we have used $\abs{\de A} = \abs{\de \overline{A}}$ and $N^{A}_\de = N^{\overline{A}}_\de$. 
+\[
+(-1)^{F_n} 
+\leftrightsquigarrow 
+\prod_{\hat{\xi}\in\de B_n(\mrm{out})}\hat{\xi}
 = 
-\prod_{n=\alert{0}}^{g}
-\lr{
-\frac{1 + (-1)^{F_n}}
-{2}
-}
-=
-\prod_{n=\alert{1}}^{g}
-\lr{
-\frac{1 + (-1)^{F_n}}
-{2}
-}
+\lr{\text{up to some Wilson loops}}
+\prod_{\hat{\xi} \in \de B_n(\mrm{in})}\hat{\xi} 
 \]
+%
+% To implement this constraint, we define the projector $\hat{\Pi}_F$ as follows.
+% \begin{equation}\label{eq:parity-complement=problem}
+%     \hat{\Pi}_F 
+%     = 
+%     \prod_{n=\alert{0}}^{g}
+%     \lr{
+%     \frac{1 + (-1)^{F_n}}
+%     {2}
+%     }
+%     =
+%     \frac{1 + (-1)^{F_{\overline{A}}}}{2}
+%     \prod_{n=\alert{1}}^{g}
+%     \lr{
+%     \frac{1 + (-1)^{F_n}}
+%     {2}
+%     }
+%     \leftrightsquigarrow
+%     \frac{1 + (-1)^{F_{A}}}{2}
+%     \hat{\Pi}_{\mathfrak{H}}^{(+)}.
+% \end{equation}
+% Although the two projectors $\hat{\Pi}_F$ and $\hat{\Pi}_\mathfrak{H}^{(+)}$ proved equivalent, it should be noted that $\hat{\Pi}_F$ here is defined in the complement problem. Note that I have used the condition $(-1)^{F_A}(-1)^{F_{\overline{A}}} = 1$. The projector $\hat{\Pi}_F$ will project out the components where some $B_n$ contains an odd number of Majorana fermions because of the following relation
+% \[
+% (-1)^{F_n} c_i = - c_i (-1)^{F_n} \quad \text{if $i\in B_n$}.
+% \]
+% % Note that whether or not $B_0$ is included in Eq.~\eqref{eq:parity-complement=problem} does not change the physical result because the overall fermion parity of a physical state must be even. That is,
+% % \[
+% % (-1)^{F_{\overline{A}}}
+% % =
+% % \prod_{n=\alert{0}}^{g} (-1)^{F_n} 
+% % =
+% % (-1)^{F_0}\prod_{n=\alert{1}}^{g} (-1)^{F_n} 
+% % = 1.
+% % \]
+% % Since we have fixed the subsystem fermion parity of each $B_n$ to be even by $\hat{\Pi}_F$, the fermion parity of $B_0$ must be even for the complement reduced density matrix $\rho_{\overline{A}}$ to be physical. 
+% %
+% In comparison to the previous section, \textbf{only one sector $(+)$ is involved in the physical entanglement spectrum in Eq.~\eqref{eq:parity-complement=problem}, unlike the original problem defined on $A$, where we have to consider all the sectors corresponding to different configurations of $\xi$-parity\footnote{Note that the $\xi$-parity has been proved to be equivalent to the subsystem fermion parity. See Eq.~\eqref{eq:parity-relations}.}}. Together, we arrive at the Majorana density matrix that is identical to the physical complement reduced density matrix $\rho_{\overline{A}}$
+% %
+% In practice, the spectrum of the Majorana fermionic reduced density matrix $\rho^F_{\overline{A}}$ (including non-genuinely physical components that lie outside $\hat{\Pi}_F$) can be easily obtained by computing the two-point correlation function inside the system.
 
-\[
-\prod_{n=\alert{0}}^{g} (-1)^{F_n} = (-1)^{F_A} = 1
-\]
+% \[
+% \rho_{\overline{A}} 
+% \leftrightsquigarrow
+% \rho^{F(\mrm{phys})}_{\overline{A}}
+% =
+% \frac{\hat{\Pi}_F\rho^F_{\overline{A}}\hat{\Pi}_F}{\Tr_{\overline{A},F} \hat{\Pi}_F} 
+% \]
+% However, since we have no clues about how the four sectors are correlated at the present stage, the Majorana entanglement spectrum gives no hint to the physical entanglement spectrum.
 
-\[
-(-1)^{F_n} c_i = - c_i (-1)^{F_n} \quad \text{if $i\in B_n$}
-\]
 
-\[
-\rho^F_{B_0\cup B_1} = 
-\hat{\Pi}_F 
-\lr{
-    \frac{1}{2^{\abs{B_0\cup B_1}}}
-    \sum_{[\mathfrak{D}]\subset B_0\cup B_1}
-    \mathfrak{C}_\mathfrak{D} \mathcal{M}_\mathfrak{D}
-}
-\hat{\Pi}_F
-\]
-
-\[
-[\Sigma_\mathfrak{D}, \Sigma_{\mathfrak{D}_{\mrm{DM}}^{(n)}}]
-=
-0
-\quad \forall \mathfrak{D} \subset B_0\cup B_1
-\]
-$(-1)^{F_{n}}\leftrightsquigarrow \Sigma_{\mathfrak{D}_{\mrm{DM}}^{(n)}}$
-
-\[
-\rho_{B_0\cup B_1}
-=
-\frac{1}{2^{1+g}}
-\rho_{B_0\cup B_1}^{(++)}
-\oplus
-\rho_{B_0\cup B_1}^{(--)}
-\oplus
-\rho_{B_0\cup B_1}^{(+-)}
-\oplus
-\rho_{B_0\cup B_1}^{(-+)}
-\]
-However, no unitary operators that commute with the reduced density matrix and connect these four blocks simultaneously. Therefore, in principle, the four blocks listed in the above equation are not identical. After the projection $\hat{\Pi}_F$, only the $(++)$ sector survives. 
-\[
-\rho_A 
-\sim 
-\frac{\hat{\Pi}_F\rho^F_{B_0\cup B_1}\hat{\Pi}_F}{\Tr \hat{\Pi}_F} 
-= 
-\rho_{B_0\cup B_1}^{(++)}
-\]
-However, since we have no clues about how the four sectors are correlated at the present stage, the Majorana entanglement spectrum gives no hint to the physical entanglement spectrum $\hat{\Pi}_F \rho^F_{A} \hat{\Pi}_F$
 \input{sections/sec_hole-magic}
 
 \appendix
